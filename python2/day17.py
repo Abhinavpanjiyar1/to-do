@@ -16,14 +16,15 @@ window = aa.Window("my todo app",
 
 while True:
     event, values = window.read()
-    print(event)
+    #print(event)
     print(values)
     match event:
         case "add":
             todos = functions.get_todos()
-            new_todo = values['todo'] + '\n'
+            new_todo = values['todo'] + "\n"
             todos.append(new_todo)
             functions.write_todos(todos)
+            window['todos'].update(values=todos)
 
         case "edit":
             todo_to_edit = values['todos'][0]
